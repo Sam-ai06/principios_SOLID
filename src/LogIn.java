@@ -4,6 +4,7 @@ public class LogIn {
         insertUserInDatabase(user);
         // Logic
     }
+    
     public void insertUserInDatabase(User user){
         // Insert user in database
     }
