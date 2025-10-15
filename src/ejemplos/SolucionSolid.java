@@ -36,6 +36,7 @@ public class SolucionSolid {
         relacionadas con el coche en esta clase**/
     }
 
+    // 2. O: Open-Closed Principle (Principio Abierto-Cerrado)
 @SuppressWarnings("unused")
 class calculadoraImpuesto{
         public double calcularImpuesto(coche c){
@@ -43,7 +44,6 @@ class calculadoraImpuesto{
         }
     }
     //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
-<<<<<<< Updated upstream
     //solución:
     abstract class carro{
         String placa;
@@ -56,7 +56,7 @@ class calculadoraImpuesto{
             System.out.println("Aire acondicionado encendido.");
         }
     }
-=======
+
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
     interface Motor{
@@ -76,7 +76,6 @@ class calculadoraImpuesto{
      * Aquí se crea una interfaz Motor que es implementada por las clases MotorGasolina y MotorElectrico.
      * La clase coche depende de la abstracción Motor en lugar de una implementación concreta
      */
->>>>>>> Stashed changes
 
     class ferrari extends carro{
         public void activarNitro(){
@@ -111,6 +110,36 @@ class calculadoraImpuesto{
     
 
     }
+
+    //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
+
+    class CocheDeLujo extends Coche {
+    boolean tieneConductorPersonal;
+
+    public CocheDeLujo(String placa, String modelo, double precio, boolean tieneConductorPersonal) {
+        super(placa, modelo, precio);
+        this.tieneConductorPersonal = tieneConductorPersonal;
+    }
+
+    // Método adicional para obtener información sobre el conductor personal, sin cambiar el cálculo de impuestos
+    public boolean tieneConductorPersonal() {
+        return tieneConductorPersonal;
+    }
+
+    // Opcionalmente, podemos agregar más comportamientos sin alterar los heredados
+    public double obtenerPrecioConConductor() {
+        // Podemos agregar un precio extra si tiene conductor, pero sin alterar el cálculo del impuesto
+        return this.precio + (this.tieneConductorPersonal ? 5000 : 0);
+    }
+
+
+    }
+
+    // Se soluciona de esta manera ya que, ahora es consistente y no modifica directamente el método calcularImpuesto
+    // y sigue la lógica de la clase Coche, además si necesita otro comportamiento se puede agregar sin problemas otro método
+    // sin alterar la lógica del método calcularImpuesto, de esta manera CocheDeLujo puede ser usado también como Coche sin
+    // ningún problema
+
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
     // aplicamos una interfaz base para todos los vehículos
     interface Vehiculo {
@@ -126,6 +155,16 @@ class calculadoraImpuesto{
 
     // clase Coche implementando solo lo que le corresponde
     class Coche implements Vehiculo {
+        String placa;
+        String modelo;
+        double precio;
+
+        public Coche(String placa, String modelo, double precio) {
+            this.placa = placa;
+            this.modelo = modelo;
+            this.precio = precio;
+        }
+
         @Override
         public void conducir() {
             System.out.println("El coche está conduciendo.");
