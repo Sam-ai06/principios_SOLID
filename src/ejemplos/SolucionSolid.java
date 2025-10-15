@@ -91,11 +91,11 @@ class calculadoraImpuesto{
 
     //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
 
-    class CocheDeLujo extends Coche {
+    class CocheDeLujo extends coche {
     boolean tieneConductorPersonal;
 
-    public CocheDeLujo(String placa, String modelo, double precio, boolean tieneConductorPersonal) {
-        super(placa, modelo, precio);
+    public CocheDeLujo(String placa, String modelo, double precio, double kilo) {
+        super(precio, placa, modelo, kilo);
         this.tieneConductorPersonal = tieneConductorPersonal;
     }
 
@@ -131,50 +131,7 @@ class calculadoraImpuesto{
         void cargarCarga();
     }
 
-    // clase Coche implementando solo lo que le corresponde
-    class Coche implements Vehiculo {
-        @Override
-        public void conducir() {
-            System.out.println("El coche está conduciendo.");
-        }
-
-        @Override
-        public void detener() {
-            System.out.println("El coche se está deteniendo.");
-        }
-
-        @Override
-        public void cargarCombustible() {
-            System.out.println("El coche está cargando combustible.");
-        }
-    }
-
-    // clase Camión implementando tanto Vehiculo como VehiculoConCarga
-    class Camion implements Vehiculo, VehiculoConCarga {
-        @Override
-        public void conducir() {
-            System.out.println("El camión está conduciendo.");
-        }
-
-        @Override
-        public void detener() {
-            System.out.println("El camión se está deteniendo.");
-        }
-
-        @Override
-        public void cargarCombustible() {
-            System.out.println("El camión está cargando combustible.");
-        }
-
-        @Override
-        public void cargarCarga() {
-            System.out.println("El camión está cargando carga.");
-        }
-    }
-        /*
-         * con esta modificacion, cada clase implementa solo lo que le corresponde sin tener que ser forzada 
-         * a implementar métodos innecesarios
-         */
+   
 
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
 }
