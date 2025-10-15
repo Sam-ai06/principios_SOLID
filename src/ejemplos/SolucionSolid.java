@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class SolucionSolid {
 
     /*
@@ -33,13 +35,62 @@ public class SolucionSolid {
         relacionadas con el coche en esta clase**/
     }
 
+    // 2. O: Open-Closed Principle (Principio Abierto-Cerrado)
 @SuppressWarnings("unused")
 class calculadoraImpuesto{
         public double calcularImpuesto(coche c){
             return c.precio * 0.12;
         }
     }
+    //solución:
+    abstract class carro{
+        String placa;
+        String modelo;
+        double precio;
+        double kilometraje;
+    }
+    class renault extends carro{
+        public void encenderAireAcondicionado(){
+            System.out.println("Aire acondicionado encendido.");
+        }
+    }
+
+    class ferrari extends carro{
+        public void activarNitro(){
+            System.out.println("Nitro activado.");
+        }
+    }
+
+    class chevrolet extends carro{
+        public void abrirCajuela(){
+            System.out.println("Cajuela abierta.");
+        }
+    }
+    /*
+     * más clases aquí
+     */
+    public static void main(String[] args) {
+        ArrayList<carro> carros = new ArrayList<>();
+        carros.add(new SolucionSolid().new renault());
+        carros.add(new SolucionSolid().new ferrari());
+        carros.add(new SolucionSolid().new chevrolet());
+    }
+
+    public static void imprimirCarros(ArrayList<carro> carros) {
+        for (carro c : carros) {
+            System.out.println("Modelo: " + c.modelo + ", Placa: " + c.placa + ", Precio: " + c.precio
+                    + ", Kilometraje: " + c.kilometraje);
+        }
+        /*
+         * este método ahora puede aceptar cualquier tipo de carro sin necesidad de ser modificado.
+         */
+
+    
+
+    }
+
     //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
+
     class CocheDeLujo extends Coche {
     boolean tieneConductorPersonal;
 
@@ -69,5 +120,4 @@ class calculadoraImpuesto{
 
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
-
 }

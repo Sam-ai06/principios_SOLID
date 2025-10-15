@@ -12,7 +12,7 @@ public class violacionSolid {
      */
 
     // *1. S.- Single responsibility principle (principio de responsabilidad única)
-    class coche {
+    public class coche {
         String placa;
         String modelo;
         double precio;
@@ -49,10 +49,24 @@ public class violacionSolid {
 
     // 2. O.- Open-Closed principle (principio de abierto-cerrado)
     public static void main(String[] args) {
+        
         ArrayList<coche> carros = new ArrayList<>();
         carros.add(new violacionSolid().new coche(15000, "Toyota", "ABC123", 20000));
-        
+        carros.add(new violacionSolid().new coche(30000, "Honda", "DEF456", 25000));
+        carros.add(new violacionSolid().new coche(5000, "Ford", "GHI789", 30000));
     }
+     //método que viola el principio OCP
+        public static void imprimirCarros(ArrayList<coche> carros) {
+            for (coche c : carros) {
+                System.out.println("Modelo: " + c.modelo + ", Placa: " + c.placa + ", Precio: " + c.precio
+                        + ", Kilometraje: " + c.kilometraje);
+            }
+        }
+
+        /*
+         * este principio se viola porque al querer imprimir otro tipo de vehículo, el método tendra que ser 
+         * cambiado una y otra vez, en lugar de extenderse para soportar nuevos tipos de vehículos.
+         */
 
     // 3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
     class CocheDeLujo extends Coche {
