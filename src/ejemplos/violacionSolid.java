@@ -96,6 +96,11 @@ public class violacionSolid {
 
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
+    class MotorGasolina {
+        public void encender() {
+            System.out.println("El motor de gasolina está encendido.");
+        }
+    }
 
 
 
