@@ -12,16 +12,9 @@ public class violacionSolid {
      */
 
     // *1. S.- Single responsibility principle (principio de responsabilidad única)
-<<<<<<< Updated upstream
-    public class coche {
-=======
     class coche {
-        MotorGasolina motor; // violación de DIP
->>>>>>> Stashed changes
-        String placa;
-        String modelo;
-        double precio;
-        double kilometraje;
+
+        
 
         // constructor
         public coche(double kilometraje, String modelo, String placa, double precio) {
@@ -78,7 +71,6 @@ public class violacionSolid {
     boolean tieneConductorPersonal;
 
     public CocheDeLujo(String placa, String modelo, double precio, boolean tieneConductorPersonal) {
-        super(placa, modelo, precio);
         this.tieneConductorPersonal = tieneConductorPersonal;
     }
 
@@ -113,10 +105,17 @@ public class violacionSolid {
     }
 
     class Coche implements Vehiculo {
+        String placa;
+        String modelo;
+        double precio;
+        double kilometraje;
+        MotorGasolina motor; // violación de DIP
         @Override
         public void conducir() {
             System.out.println("El coche está conduciendo.");
         }
+
+       
 
         @Override
         public void detener() {
@@ -171,4 +170,4 @@ public class violacionSolid {
     }
 
 
-}
+
