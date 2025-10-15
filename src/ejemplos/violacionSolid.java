@@ -1,0 +1,57 @@
+
+import java.util.ArrayList;
+
+public class violacionSolid {
+    /*
+     * principios SOLID
+     * parte de código de ejemplo elaborado por samuel villagomez y mathias giller
+     * niurka roca y paola reyes harán diagramas.
+     * En esta clase se elaborarán un ejemplo de violación de cada principio SOLID.
+     * En la clase SolucionSolidSamuel se elaborarán las soluciones a cada
+     * violación.
+     */
+
+    // *1. S.- Single responsibility principle (principio de responsabilidad única)
+    class coche {
+        String placa;
+        String modelo;
+        double precio;
+        double kilometraje;
+
+        // constructor
+        public coche(double kilometraje, String modelo, String placa, double precio) {
+            this.kilometraje = kilometraje;
+            this.modelo = modelo;
+            this.placa = placa;
+            this.precio = precio;
+        }
+
+        // métodos
+        public void manejar() {
+            System.out.println("el carro está avanzando.");
+        }
+
+        public void frenar() {
+            System.out.println("el carro está frenando.");
+        }
+
+        // violación del SRP
+        public double calcularImpuesto() {
+            return this.precio * 0.12;
+        }
+        /*
+         * este principio se viola porque la clase coche tiene dos responsabilidades:
+         * 1. representar un coche con sus atributos y métodos.
+         * 2. calcular el impuesto del coche.
+         */
+
+    }
+
+    // 2. O.- Open-Closed principle (principio de abierto-cerrado)
+    public static void main(String[] args) {
+        ArrayList<coche> carros = new ArrayList<>();
+        carros.add(new violacionSolid().new coche(15000, "Toyota", "ABC123", 20000));
+        
+    }
+
+}
