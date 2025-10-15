@@ -4,15 +4,20 @@ import java.util.ArrayList;
 public class violacionSolid {
     /*
      * principios SOLID
-     * parte de código de ejemplo elaborado por samuel villagomez y mathias giller
-     * niurka roca y paola reyes harán diagramas.
+     * parte de código de ejemplo elaborado por samuel villagomez, mathias giller
+     * niurka roca y paola reyes.
      * En esta clase se elaborarán un ejemplo de violación de cada principio SOLID.
      * En la clase SolucionSolidSamuel se elaborarán las soluciones a cada
      * violación.
      */
 
     // *1. S.- Single responsibility principle (principio de responsabilidad única)
+<<<<<<< Updated upstream
     public class coche {
+=======
+    class coche {
+        MotorGasolina motor; // violación de DIP
+>>>>>>> Stashed changes
         String placa;
         String modelo;
         double precio;
@@ -128,5 +133,15 @@ public class violacionSolid {
     //y se ven forzadas a implementarlas de todas formas.
 
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
+    
+    class MotorGasolina {
+        public void encender() {
+            System.out.println("Motor de gasolina encendido.");
+        }
+        /*
+         * este principio se viola porque la clase coche depende de una clase concreta(MotorGasolina), lo que impide cambiar fácilmente a otro tipo de motor.
+         */
+    }
+
 
 }

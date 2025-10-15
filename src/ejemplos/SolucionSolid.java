@@ -12,6 +12,7 @@ public class SolucionSolid {
     //1.- S: Single responsibility principle (principio de responsabilidad única)
 
     class coche{
+        Motor motor; //cumplimiento de DIP
         String placa;
         String modelo;
         double precio;
@@ -42,6 +43,7 @@ class calculadoraImpuesto{
         }
     }
     //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
+<<<<<<< Updated upstream
     //solución:
     abstract class carro{
         String placa;
@@ -54,6 +56,27 @@ class calculadoraImpuesto{
             System.out.println("Aire acondicionado encendido.");
         }
     }
+=======
+    //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
+    //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
+    interface Motor{
+        void encender();
+    }
+    class MotorGasolina implements Motor{
+        public void encender(){
+            System.out.println("Motor de gasolina encendido.");
+        }
+    }
+    class MotorElectrico implements Motor{
+        public void encender(){
+            System.out.println("Motor eléctrico encendido.");
+        }
+    }
+    /*
+     * Aquí se crea una interfaz Motor que es implementada por las clases MotorGasolina y MotorElectrico.
+     * La clase coche depende de la abstracción Motor en lugar de una implementación concreta
+     */
+>>>>>>> Stashed changes
 
     class ferrari extends carro{
         public void activarNitro(){
