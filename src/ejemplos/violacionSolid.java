@@ -12,12 +12,8 @@ public class violacionSolid {
      */
 
     // *1. S.- Single responsibility principle (principio de responsabilidad única)
-<<<<<<< Updated upstream
-    public class coche {
-=======
     class coche {
         MotorGasolina motor; // violación de DIP
->>>>>>> Stashed changes
         String placa;
         String modelo;
         double precio;
@@ -74,11 +70,11 @@ public class violacionSolid {
          */
 
     // 3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
-    class CocheDeLujo extends Coche {
+    class CocheDeLujo extends coche {
     boolean tieneConductorPersonal;
 
-    public CocheDeLujo(String placa, String modelo, double precio, boolean tieneConductorPersonal) {
-        super(placa, modelo, precio);
+    public CocheDeLujo(String placa, String modelo, double precio, double kilo) {
+        super(precio, modelo, placa, kilo);
         this.tieneConductorPersonal = tieneConductorPersonal;
     }
 
@@ -90,85 +86,19 @@ public class violacionSolid {
         }
         return super.calcularImpuesto();
     }
+
+
     }
     // Este principio se viola debido a que CocheDeLujo cambia la lógica totalmente
     // del método calcularImpuesto, lo que hace que el comportamiento de CocheDeLujo no
     // sea sustituible por el de un Coche, ya que el método calcularImpuesto funciona diferente
     // dependiendo del tipo de coche 
-}
-
-
-
-
 
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
-    
-    
-    // interfaz con métodos no aplicables a todos los vehículos
-    interface Vehiculo {
-        void conducir();
-        void detener();
-        void cargarCombustible();
-        void cargarCarga();  // violación del ISP: método irrelevante para algunos vehículos
-    }
-
-    class Coche implements Vehiculo {
-        @Override
-        public void conducir() {
-            System.out.println("El coche está conduciendo.");
-        }
-
-        @Override
-        public void detener() {
-            System.out.println("El coche se está deteniendo.");
-        }
-
-        @Override
-        public void cargarCombustible() {
-            System.out.println("El coche está cargando combustible.");
-        }
-
-        @Override
-        public void cargarCarga() {
-            throw new UnsupportedOperationException("Un coche no carga carga.");
-        }
-    }
-
-    class Camion implements Vehiculo {
-        @Override
-        public void conducir() {
-            System.out.println("El camión está conduciendo.");
-        }
-
-        @Override
-        public void detener() {
-            System.out.println("El camión se está deteniendo.");
-        }
-
-        @Override
-        public void cargarCombustible() {
-            System.out.println("El camión está cargando combustible.");
-        }
-
-        @Override
-        public void cargarCarga() {
-            System.out.println("El camión está cargando carga.");
-        }
-    }
-
-    //viola el principio de ISP porque la interfaz vehiculo tiene metodos que no son relevantes para todas las clases
-    //y se ven forzadas a implementarlas de todas formas.
-
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
-    
-    class MotorGasolina {
-        public void encender() {
-            System.out.println("Motor de gasolina encendido.");
-        }
-        /*
-         * este principio se viola porque la clase coche depende de una clase concreta(MotorGasolina), lo que impide cambiar fácilmente a otro tipo de motor.
-         */
-    }
+
 
 
 }
+
+
