@@ -119,5 +119,62 @@ class calculadoraImpuesto{
     // ningún problema
 
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
+    // aplicamos una interfaz base para todos los vehículos
+    interface Vehiculo {
+        void conducir();
+        void detener();
+        void cargarCombustible();
+    }
+
+    // interfaz para vehículos que pueden cargar carga
+    interface VehiculoConCarga {
+        void cargarCarga();
+    }
+
+    // clase Coche implementando solo lo que le corresponde
+    class Coche implements Vehiculo {
+        @Override
+        public void conducir() {
+            System.out.println("El coche está conduciendo.");
+        }
+
+        @Override
+        public void detener() {
+            System.out.println("El coche se está deteniendo.");
+        }
+
+        @Override
+        public void cargarCombustible() {
+            System.out.println("El coche está cargando combustible.");
+        }
+    }
+
+    // clase Camión implementando tanto Vehiculo como VehiculoConCarga
+    class Camion implements Vehiculo, VehiculoConCarga {
+        @Override
+        public void conducir() {
+            System.out.println("El camión está conduciendo.");
+        }
+
+        @Override
+        public void detener() {
+            System.out.println("El camión se está deteniendo.");
+        }
+
+        @Override
+        public void cargarCombustible() {
+            System.out.println("El camión está cargando combustible.");
+        }
+
+        @Override
+        public void cargarCarga() {
+            System.out.println("El camión está cargando carga.");
+        }
+    }
+        /*
+         * con esta modificacion, cada clase implementa solo lo que le corresponde sin tener que ser forzada 
+         * a implementar métodos innecesarios
+         */
+
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
 }
