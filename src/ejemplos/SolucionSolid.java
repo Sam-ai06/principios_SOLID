@@ -39,5 +39,8 @@ class calculadoraImpuesto{
             return c.precio * 0.12;
         }
     }
+    //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
+    //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
+    //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
 
 }
