@@ -54,7 +54,34 @@ public class violacionSolid {
         
     }
 
-    //3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
+    // 3. L.- Liskov Substitution Principle (principio de sustitución de Liskov)
+    class CocheDeLujo extends Coche {
+    boolean tieneConductorPersonal;
+
+    public CocheDeLujo(String placa, String modelo, double precio, boolean tieneConductorPersonal) {
+        super(placa, modelo, precio);
+        this.tieneConductorPersonal = tieneConductorPersonal;
+    }
+
+    // Sobreescribimos el método para calcular el impuesto, lo que cambia la lógica
+    @Override
+    public double calcularImpuesto() {
+        if (this.tieneConductorPersonal) { // Cambiamos el cálculo de impuesto si tiene conductor personal
+            return super.calcularImpuesto() + 1000;  // Añadimos un impuesto extra si tiene conductor
+        }
+        return super.calcularImpuesto();
+    }
+    }
+    // Este principio se viola debido a que CocheDeLujo cambia la lógica totalmente
+    // del método calcularImpuesto, lo que hace que el comportamiento de CocheDeLujo no
+    // sea sustituible por el de un Coche, ya que el método calcularImpuesto funciona diferente
+    // dependiendo del tipo de coche 
+}
+
+
+
+
+
     //4. I.- Interface Segregation Principle (principio de segregación de interfaces)
     //5. D.- Dependency Inversion Principle (principio de inversión de dependencias)
 
